@@ -1,6 +1,8 @@
 # Face Detection Recognition
 
-![FDR Logo](https://github.com/ShathaAltassan/FDR-System/assets/138797663/09541351-1a96-47f8-a43c-9a90068dd1a8)
+<p align="center">
+  <img src="https://github.com/ShathaAltassan/FDR-System/assets/138797663/09541351-1a96-47f8-a43c-9a90068dd1a8" alt="FDR Logo">
+</p>
 
 ## Overview
 
