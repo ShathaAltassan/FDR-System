@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-MlN7CFKpaqwtVmowkxNqGEJ8EqJgLxcopmZDOFHFpBDYzIAsj9WjqB5iQmLUafv8j8l5d1HlcZUKBIBMBkvKXQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Face Recognition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         
+        /* Set background image */
+        body {
+            scroll-behavior: smooth;
+            background: linear-gradient(
+                135deg,
+                #6d6d75,
+                #1D1F39
+            );
+            background: rgba(0,0,0,0.7)url(/static/4k-tech-gjapvyu4olb6z340.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: darken;
+            padding: 0px 0;
+            text-align: center;
+        }
+
+        header {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1D1F39;
+            width: 100%;
+            position: fixed;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px ;
+        }
+        
+        .logo{
+            text-decoration: none;
+            color: #3a6cf4;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 1.8em;
+            padding-left: 15px;
+        
+        }
+        
+        .navigation a{
+            color: #4a4b4d;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding-left: 30px;
+        }
+        
+        .navigation a:hover{
+            color: #ffffff;
+        }
+
+        /* Style for buttons */
+        button {
+            align-items: center;
+            background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            display: center;
+            font-family: Phantomsans, sans-serif;
+            font-size: 18px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 3px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all .3s;
+           }
+           
+           button:active,
+           button:hover {
+            outline: 0;
+           }
+           
+           button span {
+            background-color: rgb(5, 6, 45);
+            padding: 16px 24px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            transition: 300ms;
+           }
+           
+           button:hover span {
+            background: none;
+           }
+           
+           button:active {
+            transform: scale(0.9);
+           }
+
+        /* Style for forms */
+        form {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for better readability */
+            padding: 20px;
+            border-radius: 10px;
+            display:flask;
+        }
+
+        /* Style for input fields */
+        input[type="text"], input[type="file"], select {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 40%;
+            box-sizing: border-box;
+            display: flask;
+        }
+
+        /* Style for footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for better readability */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+        .card {
+            width: 500x;
+            background-color: #0d1338;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin: 20px auto;
+        }
+        
+        .card h1{
+            font-size: 10 rem;
+            margin-bottom: 20px;
+            color: #D6E0D9;
+        }
+
+        .card .upload-section h3{
+            font-size: 10 rem;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .card .video-section h3{
+            font-size: 10 rem;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .card .live-stream-section h3{
+            font-size: 10 rem;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .cardi-container {
+            display: flex;
+            justify-content: space-around; /* Adjust as needed */
+        }
+        .text h1{
+            font-size: 10 rem;
+            color: white;
+            margin-bottom: 50px;
+            background-color: rgba(173, 216, 230, 0.2); /* Adjust the last value (0.5) for transparency *
+            padding: 17px; /* Optional: Add padding for better readability */
+        }
+        
+        .cardi {
+            width: 1000px;
+            height: 400px;
+            background: #07182E;
+            position: relative;
+            display: flex;
+            place-content: center;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 10px; /* Adjust spacing between cards */
+            padding: 20px; /* Adjust padding */
+        }
+        
+            
+        .cardi h3 {
+            z-index: 1;
+            color: white;
+            font-size: 1.5em;
+        }
+        
+        .cardi::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+            height: 170%;
+            animation: rotBGimg 3s linear infinite;
+            transition: all 0.2s linear;
+        }
+        
+        @keyframes rotBGimg {
+            from {
+                transform: rotate(0deg);
+            }
+        
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .cardi::after {
+            content: '';
+            position: absolute;
+            background: #07182E;
+            inset: 5px;
+            border-radius: 15px;
+        }
+        
+          
+
+         
+
+        #upload-section {
+            display: none;
+        }
+
+
+        #preloader{
+            background: #1D1F39 url(/static/preloader.gif) no-repeat center center;
+            background-size: 20%;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+
+        .btn {
+            border: none;
+            width: 15em;
+            height: 5em;
+            border-radius: 3em;
+            display: center;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #ffff;
+            cursor: pointer;
+            transition: all 450ms ease-in-out;
+          }
+          
+          .sparkle {
+            fill: #AAAAAA;
+            transition: all 800ms ease;
+          }
+          
+          .value {
+            font-weight: 600;
+            color: #FFFFFF;
+            font-size: medium;
+          }
+          
+          .btn:hover {
+            background: linear-gradient(0deg,#A47CF3,#683FEA);
+            box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+            inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+            0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+            0px 0px 180px 0px #9917FF;
+            transform: translateY(-2px);
+          }
+          
+          .btn:hover .value{
+            color:#FFFFFF;
+          }
+          
+          .btn:hover .sparkle {
+            fill:#FFFFFF;
+            transform: scale(1.2);
+          }
+          
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/static/logo.png" alt="logo" height="60" width="60">
+        <nav class="navigation">
+            <a href="/home">Home</a> 
+            <a href="/about">About</a>
+            <a href="/about">Contact</a>  
+            <a href="/">FDR</a>                   
+        </nav>
+    </header>
+    <br> <br> <br> <br> <br> <br> <br> <br>
+    <div class="text">
+    <h1> Instructions </h1> 
+    </div>
+    
+    <div class="cardi-container">
+        <div class="cardi">
+            <h3>
+                 To create your database, upload images of known faces. images must be in <span style="color:red;">.jpg</span> format.<br><br>
+            You can begin the counting process either through a live stream or by uploading a video file.<br><br>
+            If choosing the video upload option, ensure the file format is <span style="color:red;">.mp4</span>.<br>
+            </h3>
+        </div>
+    </div>
+        
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-96fhxW5g3D2jQf5GZ/lHGB0b6chX8LUonRkFdES0gJqk+GFe6jyG0EKp+0UEr+eqMMlQ3wuw5Ht5Q0nTHoFxLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <br> <br> <br> <br> 
+    <div class="text">
+        <h1> FDR System </h1> 
+        </div>
+    <div class="card">
+    <h1>Database</h1>
+    
+    <button onclick="toggleUploadSection()">  <span class="text">Show Upload Section</span></button>
+    <div id="upload-section">
+        <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            <h3>First, do you have a database with us, or do you want to create a new database?</h3> <br>
+            <label for="upload-collection-option">Choose an option:</label><br>
+            <input type="radio" id="create-collection" name="collection-option" value="create" onclick="toggleCollectionField(true)">
+            <label for="create-collection">Create a New Database</label><br>
+            <input type="radio" id="existing-collection" name="collection-option" value="existing" onclick="toggleCollectionField(false)">
+            <label for="existing-collection">Use an Existing Database</label><br><br>
+
+            <div id="collection-field" style="display:none;">
+                <label for="collection-name">Database Name:</label>
+                <input type="text" id="collection-name" name="collection" required><br><br>
+            </div>
+            
+            <select id="existing-collection-select" name="existing-collection" style="display:none;">
+                <option value="" selected disabled>Select an existing Database</option>
+                {% for collection in collections %}
+                <option value="{{ collection }}">{{ collection }}</option>
+                {% endfor %}
+            </select><br><br>
+            
+            <h3>How many known people do you have?  When you're finished, press 'Upload'</h3> <br>
+            <!-- Dropdown menu to select number of people -->
+            <label for="num-people">Number of People:</label>
+            <select id="num-people" name="num_people" onchange="generateInputFields()" required>
+                <option value="" selected disabled>Select Number</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <!-- Add more options as needed -->
+            </select><br><br>
+            <!-- Container to dynamically generate input fields -->
+            <div id="input-fields-container"></div>
+            <input type="submit" value="Upload" class=btn>
+            
+        </form>
+    </div>
+</div>
+
+<script>
+    function toggleUploadSection() {
+        var uploadSection = document.getElementById("upload-section");
+        if (uploadSection.style.display === "none") {
+            uploadSection.style.display = "block"; // Show the upload section
+        } else {
+            uploadSection.style.display = "none"; // Hide the upload section
+        }
+    }
+
+    function toggleCollectionField(isCreate) {
+        var collectionField = document.getElementById("collection-field");
+        var existingCollectionSelect = document.getElementById("existing-collection-select");
+
+        if (isCreate) {
+            collectionField.style.display = "block";
+            existingCollectionSelect.style.display = "none";
+        } else {
+            collectionField.style.display = "none";
+            existingCollectionSelect.style.display = "block";
+        }
+    }
+
+    function generateInputFields() {
+        var numPeople = document.getElementById("num-people").value;
+        var container = document.getElementById("input-fields-container");
+        container.innerHTML = ""; // Clear previous fields
+
+        for (var i = 0; i < numPeople; i++) {
+            var nameLabel = document.createElement("label");
+            nameLabel.textContent = "Name of Person " + (i + 1) + ":";
+            container.appendChild(nameLabel);
+
+            var nameInput = document.createElement("input");
+            nameInput.type = "text";
+            nameInput.name = "name_" + (i + 1);
+            nameInput.required = true;
+            container.appendChild(nameInput);
+
+            var fileLabel = document.createElement("label");
+            fileLabel.textContent = "Upload Image for Person " + (i + 1) + ":";
+            container.appendChild(fileLabel);
+
+            var fileInput = document.createElement("input");
+            fileInput.type = "file";
+            fileInput.name = "file_" + (i + 1);
+            fileInput.accept = "image/*";
+            fileInput.required = true;
+            container.appendChild(fileInput);
+
+            var breakElement = document.createElement("br");
+            container.appendChild(breakElement);
+        }
+    }
+</script>
+    
+    <br>  <br>  
+
+
+
+    <div class="card">
+    <h1>Start Live Stream</h1>
+    <button onclick="toggleLiveStreamSection()"> <span class="text">Show Live Stream Section</span></button> <!-- Button to toggle visibility of live stream section -->
+    <div id="live-stream-section" style="display: none;"> <!-- Initially hidden -->
+        <form action="/start_stream" method="post">
+            <h3>To start counting people from live strem , first select your database , then press "Start Live Stream" </h3> <br>
+            <label for="stream-collection">Select a Database:</label>
+            <select id="stream-collection" name="collection">
+                {% for collection in collections %}
+                <option value="{{ collection }}">{{ collection }}</option>
+                {% endfor %}
+            </select><br><br>
+            <input type="submit" value="Start Live Stream"class=btn>
+        </form>
+        <br>
+        <div class="stream-container">
+            <img id="stream" src="{{ url_for('start_stream') }}" style="width:100%;">
+        </div>
+    </div>
+</div>
+
+    <script>
+        function toggleLiveStreamSection() {
+            var liveStreamSection = document.getElementById("live-stream-section");
+            if (liveStreamSection.style.display === "none") {
+                liveStreamSection.style.display = "block"; // Show the live stream section
+            } else {
+                liveStreamSection.style.display = "none"; // Hide the live stream section
+            }
+        }
+
+        
+    </script>
+
+    <br>  <br>  
+
+
+
+
+
+<div class="card">
+    <h1>Uploaded Video</h1>
+    <button onclick="toggleVideoSection()"> <span class="text">Show Video Section</span></button> <!-- Button to toggle visibility of video section -->
+    <div id="video-section" style="display: none;"> <!-- Initially hidden -->
+        <form action="/process_video" method="post" enctype="multipart/form-data">
+            <h3>To start counting people from uploaded video , first select your database , then press "Process Video" </h3> <br>
+            <label for="video-collection">Select a Database:</label>
+            <select id="video-collection" name="collection">
+                {% for collection in collections %}
+                <option value="{{ collection }}">{{ collection }}</option>
+                {% endfor %}
+            </select><br><br>
+            <input type="file" id="video-file" name="file" accept="video/*" required><br><br> 
+            <input type="submit" value="Process Video"class=btn>
+        </form>
+    </div>
+      </div>
+
+    <script>
+        function toggleVideoSection() {
+            var videoSection = document.getElementById("video-section");
+            if (videoSection.style.display === "none") {
+                videoSection.style.display = "block"; // Show the video section
+            } else {
+                videoSection.style.display = "none"; // Hide the video section
+            }
+        }
+    </script>
+
+
+    <br>  <br>  <br>  <br>  <br>
+
+
+
+
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load" , function(){
+            loader.style.display = "none";
+        })
+    </script>
+    <footer>
+        <p>© 2024 FDR team. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+</html>

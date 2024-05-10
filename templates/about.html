@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         
+        body {
+            font-family:  'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+         
+        .about {
+         /*   background: linear-gradient(
+                135deg,
+                #015555,
+                #32323625
+            ); */
+            background-color: #0c1631fa;
+            padding: 100px 0 20px 0;
+            text-align: center;
+        }
+         
+        .about h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #dbdbdb;
+        }
+         
+        .about p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            color: #89918b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+         
+        .about-info {
+            margin: 2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+        }
+        .about-info p {
+            font-size: 1.2rem;
+            margin: 0 2rem;
+            text-align: justify;
+        }     
+        .contact {
+            background: linear-gradient(
+                135deg,
+                #6d6d75,
+                #1D1F39
+            );
+            background: rgba(0,0,0,0.7)url(/static/vv.png) no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: darken;
+            padding: 30px 0;
+            text-align: center;
+        }
+         
+        .contact h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #D6E0D9;
+        }
+
+        .contact h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0rem;
+            margin-bottom: 20px;
+            color: #D6E0D9;
+        }
+         
+         
+        .contact-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+         
+        .card {
+            background-color: #0d1338;
+            color: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 18rem;
+            height: 25rem;
+            margin-top: 10px;
+        }
+         
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+         
+        .card-img {
+            width: 18rem;
+            height: 12rem;
+            color: #3a6cf4;
+        }
+         
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+         
+        .card-info button {
+            margin: 2rem 1rem;
+        }
+         
+        .card-name {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+         
+        .card-role {
+            font-size: 1rem;
+            color: #888;
+            margin: 5px 0;
+        }
+         
+        .card-email {
+            font-size: 1rem;
+            color: #555;
+        }
+         
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+         
+        @media (max-width: 768px) {
+            nav {
+                display: block;
+            }
+         
+            .logo {
+                text-align: center;
+            }
+         
+            .nav-links {
+                margin-top: 1rem;
+                justify-content: space-between;
+            }
+         
+            .nav-links li {
+                margin-right: 0;
+            }
+         
+            .about h1 {
+                font-size: 2rem;
+            }
+         
+            .about p {
+                font-size: 0.9rem;
+            }
+         
+            .about-info {
+                flex-direction: column;
+                text-align: center;
+            }
+         
+            .about-img {
+                width: 60%;
+                height: 60%;
+                margin-bottom: 1rem;
+            }
+         
+            .about-info p {
+                margin: 1rem 2rem;
+            }
+         
+            .about-info button {
+                margin: 1rem 2rem;
+                width: 10rem;
+            }
+         
+            .contact {
+                margin: 0 1rem;
+            }
+        }
+        header {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1D1F39;
+            width: 100%;
+            position: fixed;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px ;
+        }
+        
+        .logo{
+            text-decoration: none;
+            color: #3a6cf4;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 1.8em;
+            padding-left: 15px;
+        
+        }
+        
+        .navigation a{
+            color: #4a4b4d;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding-left: 30px;
+        }
+        
+        .navigation a:hover{
+            color: #ffffff;
+        }
+        #preloader{
+            background: #1D1F39 url(/static/preloader.gif) no-repeat center center;
+            background-size: 20%;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/51517f3c75.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="preloader"></div>
+
+    <header>
+        <img src="/static/logo.png" alt="logo" height="60" width="60">
+            <nav class="navigation" >
+            <a href="/home">Home</a> 
+            <a href="/about">About</a>
+            <a href="/about">Contact</a>  
+            <a href="/">FDR</a>                 
+                   
+                      
+            </nav>
+    </header>
+    <section class="about">
+        <h1>About Us</h1>
+       <!-- <p style="font-weight: bold">
+           is a leading platform...
+          </p> -->
+        <div class="about-info">
+            <div>
+            <p> 
+                Our website employs cutting-edge face detection and recognition tech to accurately count known and unknown individuals in a designated area. Utilizing a pre-established database for known individuals, our system focuses on counting only those who cannot be identified, ensuring accuracy and privacy. Swift operation and stringent privacy measures are core priorities, aiming to deliver efficient and secure face recognition in videos and live streams.
+            </p>
+            </div>
+        </div>
+    </section>
+        <section class="contact">
+            <h1> Team Member </h1>
+         <!-- razan -->  
+        <div class="contact-cards">
+            <div class="card">
+                <div class="card-img">
+                </div>
+                <div class="card-info">
+                    <h2 class="card-name">Razan</h2>
+                    <p class="card-role"> linked-ln</p>
+                    <a href="https://www.linkedin.com/in/razan-alrathaya-20899826b" target="_blank"> <i class="fa-brands fa-linkedin"></i> </a>
+                </div>
+            </div>
+             <!-- afrah -->  
+            <div class="card">
+                <div class="card-img">
+                </div>
+                <div class="card-info">
+                    <h2 class="card-name">Afrah</h2>
+                    <p class="card-role"> linked-ln</p>
+                    <a href="http://linkedin.com/in/afrah-alharbi-567718299" target="_blank"> <i class="fa-brands fa-linkedin"></i> </a>
+                </div>
+            </div>
+                <!-- shatha -->  
+                <div class="card">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-info">
+                        <h2 class="card-name">Shatha</h2>
+                        <p class="card-role"> linked-ln</p>
+                        <a href="http://linkedin.com/in/shatha-altassan" target="_blank"> <i class="fa-brands fa-linkedin"></i> </a>
+                    </div>
+                </div>
+                  <!-- nuha -->  
+                  <div class="card">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-info">
+                        <h2 class="card-name">Nuha</h2>
+                        <p class="card-role"> linked-ln</p>
+                        <a href="https://www.linkedin.com/in/%D9%86%D9%87%D9%89-%D8%A7%D9%84%D8%AD%D8%B1%D8%A8%D9%8A-111886308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"> <i class="fa-brands fa-linkedin"></i> </a>
+                    </div>
+                </div>
+                  <!-- Gadah -->  
+                  <div class="card">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-info">
+                        <h2 class="card-name">Gadah</h2>
+                        <p class="card-role"> linked-ln</p>
+                        <a href="https://www.linkedin.com/in/ghada-aljad-091ba8307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fa-brands fa-linkedin"></i> </a>
+                    </div>
+                </div>
+            
+    </section>
+        
+    <section class="contact" id="contact">
+        <h1>Contact With Us</h1>
+        <br>
+        <h3 > We take your opinions seriously</h3>
+        <a href="mailto:fdr.teamm@gmail.com"><i class="fa-regular fa-envelope" style="color: gray; 
+            font-size: 3.5em; 
+            text-align: center;"></i></a>
+        </section>
+    <footer>
+        <p>© 2024 FDR team. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load" , function(){
+            loader.style.display = "none";
+        })
+    </script>
+    
+</body>
+</html>

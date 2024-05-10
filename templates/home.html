@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style rel="text/css">
+        @import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
+        *{ 
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+             }
+
+        .main{
+            text-align: left;
+            color: rgb(236, 236, 236);
+            background:rgba(0,0,0,0.7) url("/static/background.jpg"); no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: darken;
+            padding: 150px 70px;
+            
+        }
+        main h1 {
+            color: #fff;
+            font-size: 2.4em;
+            font-weight: 500;
+        }
+        
+      
+        
+        .main h3 {
+            color: #fff;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px #eef0f0, 0 0 10px #c4c6c6, 0 0 15px #8b8d8c, 0 0 20px #5f6161;
+         }
+
+            .main h4 {
+                font-size: 1.2rem;
+
+                text-align: left;
+                font-weight: 40px;
+                margin-bottom: 2rem;
+                margin-right: 100px;
+                color: white;
+                font-size: 20px;
+                margin-bottom: rem;
+            }
+        
+       
+
+        .btn{
+             background:rgba(0,0,0,0.7)url(/static/background.jpg) no-repeat;
+             background-size: cover;
+             background-position: center;
+             background-attachment: fixed;
+             background-blend-mode: darken;
+             padding: 250px 250px;
+              padding: 100px 20px ;
+               word-spacing: 15px;
+             }
+
+        .main-btn {
+            color: #fff;
+            background-color:#464b4a;
+            opacity:0.6;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            display: inline-block;
+            padding: 0.9375em 2.1875em;
+            letter-spacing: 1px;
+            border-radius: 15px;
+            margin-bottom: 40px; 
+            word-spacing: normal;
+            transition: 0.7s ease;
+         }
+         .main-btn:hover {
+            background-color:#7e7e7e;
+            transform: scale(1.1); 
+        }
+        #preloader{
+            background: #1D1F39 url(/static/preloader.gif) no-repeat center center;
+            background-size: 20%;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+        header {
+            font-family: cursive;
+            background-color: #1D1F39;
+            width: 100%;
+            position: fixed;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px ;
+        }
+        
+        .logo{
+            text-decoration: none;
+            color: #3a6cf4;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 1.8em;
+            padding-left: 15px;
+        
+        }
+        
+        .navigation a{
+            color: #4a4b4d;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding-left: 30px;
+        }
+        
+        .navigation a:hover{
+            color: #ffffff;
+        }
+            /* Footer */
+            footer {
+                background-color: #222;
+                color: white;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .btnn {
+                outline: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-between;
+                background: linear-gradient(135deg, #15202b, #004b4b); /* Dark blue to dark green gradient */
+                min-width: 200px;
+                border: 0;
+                border-radius: 4px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+                box-sizing: border-box;
+                padding: 16px 20px;
+                color: #fff;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 1.2px;
+                text-transform: uppercase;
+                overflow: hidden;
+                cursor: pointer;
+            }
+            
+            .btnn:hover {
+                opacity: .95;
+            }
+            
+            .btnn .animation {
+                border-radius: 100%;
+                animation: ripple 0.6s linear infinite;
+            }
+            
+            @keyframes ripple {
+                0% {
+                    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+                }
+            
+                100% {
+                    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+                }
+            }
+            
+            
+    </style>
+    <title>face recognition system</title>
+</head>
+<body>
+    <header>
+    <img src="/static/logo.png" alt="logo" height="60" width="60">
+        <nav class="navigation" >
+            <a href="/home">Home</a> 
+            <a href="/about">About</a>
+            <a href="/about">Contact</a>  
+            <a href="/">FDR</a>                   
+                                
+               
+                  
+        </nav>
+</header>
+    <div id="preloader"></div>
+    <section class="main"> 
+        <br><br><br><br>
+
+        <h1>Welcome to</h1> <br>
+        <h3>Facial Detection & Recognition System Websites: <br> Securing Tomorrow's Digital Frontier</h3>
+        <h4>To count the known and unkown people in live stream or uploaded video</h4>
+        <div>
+            <a href="/" class="btnn"><i class="animation"></i> FDR System<i class="animation"></i></a>
+        </div>
+        
+    </section>
+
+
+
+    <section class="btn">
+        
+     <!--   <a href="" class="main-btn">Upload Local File</a> -->
+
+    
+
+    </section>
+    
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load" , function(){
+            loader.style.display = "none";
+        })
+    </script>
+    <footer>
+        <p>© 2024 FDR team. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
