@@ -1,4 +1,4 @@
-# Face Recognition Flask App
+# Face Detection Recognition
 
 ## Overview
 
