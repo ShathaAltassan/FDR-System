@@ -1,5 +1,7 @@
 # Face Detection Recognition
 
+![Uploading FDR Logo.png…]()
+
 ## Overview
 
 FDR System application designed for face recognition tasks. It leverages deep learning models for face detection and recognition and integrates MongoDB for efficient data storage. The application provides functionalities such as image upload, video processing, and live streaming for real-time face recognition.
